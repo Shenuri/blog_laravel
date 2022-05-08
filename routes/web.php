@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Auth::routes(); // registraion route is called here
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Post
+Route::post('/posts/store',[PostController::class, 'store'])->name('posts.store');
