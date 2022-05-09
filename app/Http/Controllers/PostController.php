@@ -19,4 +19,13 @@ class PostController extends Controller
         return back();
 
     }
+
+    public function show($postId){
+
+        //get the post based on the post id 
+        //findOrFail -> if there is not data it will generate an error page (not found page)
+        $post= Post::findOrFail($postId);
+        return view('posts.show',compact('post'));
+
+    }
 }
