@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,17 @@ Route::post('/posts/store',[PostController::class, 'store'])->name('posts.store'
 
 //show posts
 Route::get('/posts/{postId}/show/',[PostController::class, 'show'])->name('posts.show');
+
+
+//get all posts
+Route::get('/posts/all', [HomeController::class,'allPost'])->name('posts.all');
+
+
+//edit post
+Route::get('/posts/{postId}/edit',[PostController::class,'edit'])->name('posts.edit');
+
+//store updated post
+Route::post('/posts/{postId}/update', [PostController::class, 'update'])->name('posts.update');
+
+//delete post
+Route::get('/posts/{postId}/delete', [PostController::class, 'delete'])->name('posts.delete');

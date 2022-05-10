@@ -16,7 +16,7 @@ class PostController extends Controller
 
         ]);
 
-        return back();
+        return redirect(route('posts.all'));
 
     }
 
@@ -26,6 +26,26 @@ class PostController extends Controller
         //findOrFail -> if there is not data it will generate an error page (not found page)
         $post= Post::findOrFail($postId);
         return view('posts.show',compact('post'));
+
+    }
+
+
+    public function edit($postId){
+        $post = Post::findOrFail($postId);
+        return view('posts.edit',compact('post'));
+    }
+
+    public function update($postId,Request $request){
+        Post::findOrFail($postId)->update($request->all());
+
+        return redirect(route('posts.all'));
+
+    }
+
+
+    public function delete($postId){
+        Post::findOrFail($postId)->delete();
+        return redirect(route('posts.all'));
 
     }
 }

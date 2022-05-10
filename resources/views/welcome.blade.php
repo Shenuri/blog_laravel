@@ -31,7 +31,7 @@
       </h3>
       <div class="mb-1 text-muted">{{date('y-m-d',strtotime($post->created_at))}}</div>
       <p class="card-text mb-auto">
-       {{$post->description}}
+       {{Str::limit($post->description,300)}}
       </p>
       <a href="{{route('posts.show',$post->id)}}">Continue reading</a>
     </div>
