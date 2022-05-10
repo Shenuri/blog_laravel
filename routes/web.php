@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
@@ -52,3 +53,10 @@ Route::post('/posts/{postId}/update', [PostController::class, 'update'])->name('
 
 //delete post
 Route::get('/posts/{postId}/delete', [PostController::class, 'delete'])->name('posts.delete');
+
+
+//Admin Routes
+ 
+//only the admin can use this route ---> middleware('admin')
+ 
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('admin')->name('admin.dashboard');
