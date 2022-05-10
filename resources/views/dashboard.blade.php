@@ -35,7 +35,7 @@
 
                     
                     <form method="post" action="{{route
-                    ('posts.store')}}">
+                    ('posts.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <label>Post Title</label>
@@ -45,8 +45,9 @@
                             <label>Post Description</label>
                             <textarea class="form-control" placeholder="Enter Post Description" name="description" rows="10" required></textarea>
                           </div>
-
-                    
+                        <div class="form-group">
+                            <input type="file" class="form-control" name='thumbnail'>
+                        </div>
                         <button type="submit" class="btn btn-primary">Post</button>
                       </form>
                 </div>

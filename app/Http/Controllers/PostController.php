@@ -14,17 +14,25 @@ class PostController extends Controller
         //makes the fields required and store data only the 
         $validator = Validator::make($request->all(),[
             'title' =>'required',
-            'description' => 'required'
+            'description' => 'required',
+            'thumbnail' => 'required|image'
         ]);
 
         if($validator->fails()){
             return back()->with('status','Something went Wrong!');
         }else{
 
+            //rename the image name to time+extension so by doing this we can upload the same image as many time cause the name is different  
+            $imageName= time() . "." .$request->thumbnail->extension();
+
+            //creats a folder to store the images
+            $request->thumbnail->move(public_path('thumbnails'), $imageName);
+
             Post::create([
                 'user_id' => auth()->user()->id,
                 'title' => $request->title,
                 'description' => $request->description,
+                'thumbnail' => $imageName
     
     
             ]);
