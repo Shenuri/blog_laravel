@@ -4,7 +4,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="cole-md-8">
+        <div class="cole-md-12">
+            <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
