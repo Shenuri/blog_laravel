@@ -4,7 +4,7 @@
 
 <div class="card text-center mt-5 mb-5">
     <div class="card-header">
-      #{{$post->id}}
+      <img src="{{ url('thumbnails/' .  $post->thumbnail) }}" class="img-thumbnail" alt="Thumbnail" height="900" width=500>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{$post->title}}</h5>

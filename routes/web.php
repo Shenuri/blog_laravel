@@ -34,29 +34,41 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-//store Post
-Route::post('/posts/store',[PostController::class, 'store'])->name('posts.store');
-
 //show posts
 Route::get('/posts/{postId}/show/',[PostController::class, 'show'])->name('posts.show');
 
 
-//get all posts
-Route::get('/posts/all', [HomeController::class,'allPost'])->name('posts.all');
+
+//Route Groups->improves security and limits access. 
+Route::group(['middlware'=>'auth'], function(){
+
+    //store Post
+    Route::post('/posts/store',[PostController::class, 'store'])->name('posts.store');
 
 
-//edit post
-Route::get('/posts/{postId}/edit',[PostController::class,'edit'])->name('posts.edit');
+    //get all posts
+    Route::get('/posts/all', [HomeController::class,'allPost'])->name('posts.all');
 
-//store updated post
-Route::post('/posts/{postId}/update', [PostController::class, 'update'])->name('posts.update');
 
-//delete post
-Route::get('/posts/{postId}/delete', [PostController::class, 'delete'])->name('posts.delete');
+    //edit post
+    Route::get('/posts/{postId}/edit',[PostController::class,'edit'])->name('posts.edit');
+
+    //store updated post
+    Route::post('/posts/{postId}/update', [PostController::class, 'update'])->name('posts.update');
+
+    //delete post
+    Route::get('/posts/{postId}/delete', [PostController::class, 'delete'])->name('posts.delete');
+});
+
+
 
 
 //Admin Routes
  
 //only the admin can use this route ---> middleware('admin')
  
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('admin')->name('admin.dashboard');
+Route::group(['middleware'=>['admin','auth']], function(){
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('admin')->name('admin.dashboard');
+
+
+});

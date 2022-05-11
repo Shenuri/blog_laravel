@@ -20,7 +20,7 @@ Welcome to Machine Learning Hub. Let's share our knowledge about machine learnin
 <div class="col-md-6">
   <div class="card flex-md-row mb-4 box-shadow h-md-250">
     <div class="card-body d-flex flex-column align-items-start">
-      <img src="{{ url('thumbnails/' .  $post->thumbnail) }}" class="img-thumbnail" alt="Thumbnail">
+      <img src="{{ url('thumbnails/' .  $post->thumbnail) }}" class="img-thumbnail" alt="Thumbnail" height="900" width=500>
       <h3 class="mb-0">
         <a class="text-dark" href="{{route('posts.show',$post->id)}}">{{$post->title}}</a>
       </h3>

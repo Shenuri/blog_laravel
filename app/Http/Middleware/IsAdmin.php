@@ -25,12 +25,18 @@ class IsAdmin
 
          //if(auth()->user()->role==ADMIN) ---> can use both codes  
 
-        if(Auth::user()->IsAdmin()){
-            //redirect to admin page
-            return $next($request);
-
+        if(auth()->user()){
+            if(Auth::user()->IsAdmin()){
+                
+                //redirect to admin page
+                return $next($request);
+                //return view('admin.dashboard');
+    
+            }else{
+                //redirect to user page
+                return back();
+            }
         }else{
-            //redirect to user page
             return back();
         }
        
