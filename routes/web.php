@@ -41,6 +41,8 @@ Route::get('/posts/{postId}/show/',[PostController::class, 'show'])->name('posts
 //store Comment
 Route::post('/comments/{post_id}',[CommentController::class, 'storeComment'])->name('comments.storeComment');
 
+Route::get('/comments/{post_id}',[CommentController::class, 'showComment'])->name('comments.showComment');
+
 
 //Route Groups->improves security and limits access. 
 Route::group(['middlware'=>'auth'], function(){

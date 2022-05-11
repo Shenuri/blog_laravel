@@ -20,6 +20,7 @@
                         </div>
                     </form>
                         <hr>
+                        @foreach ($post->comments as $comment)
                         <div class="container mt-5">
 
                             <div class="row  d-flex justify-content-center">
@@ -33,10 +34,10 @@
                                       <div class="user d-flex flex-row align-items-center">
                 
                                         <img src="https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png" width="30" class="user-img rounded-circle mr-2">
-                                        <span><small class="font-weight-bold text-primary">james_olesenn</small> <small class="font-weight-bold">Hmm, This poster looks cool</small></span>
+                                        <span><small class="font-weight-bold text-primary">{{$comment->user->name}}</small> <small class="font-weight-bold">{{$comment->comment_body}}</small></span>
                                           
                                       </div>
-                                      <small>2 days ago</small>
+                                      <small>{{date('y-m-d',strtotime($comment->created_at))}}</small>
                                       </div>
                                       <div class="action d-flex justify-content-between mt-2 align-items-center">
                 
@@ -52,6 +53,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
