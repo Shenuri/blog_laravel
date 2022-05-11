@@ -24,6 +24,7 @@ Welcome to Machine Learning Hub. Let's share our knowledge about machine learnin
       <h3 class="mb-0">
         <a class="text-dark" href="{{route('posts.show',$post->id)}}">{{$post->title}}</a>
       </h3>
+      <div class="mb-1 text-muted">{{$post->user->name}}</div>
       <div class="mb-1 text-muted">{{date('y-m-d',strtotime($post->created_at))}}</div>
       <p class="card-text mb-auto">
        {{Str::limit($post->description,300)}}
