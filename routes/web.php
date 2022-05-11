@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
@@ -37,6 +38,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //show posts
 Route::get('/posts/{postId}/show/',[PostController::class, 'show'])->name('posts.show');
 
+//store Comment
+Route::post('/comments/{post_id}',[CommentController::class, 'storeComment'])->name('comments.storeComment');
 
 
 //Route Groups->improves security and limits access. 

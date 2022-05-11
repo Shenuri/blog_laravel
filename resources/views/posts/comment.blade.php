@@ -1,4 +1,3 @@
-
 <div class="container mb-5">
     <div class="row bootstrap snippets bootdeys">
         <div class="col-md-8 col-sm-12">
@@ -7,11 +6,19 @@
                     <div class="panel-heading">
                         Comment panel
                     </div>
-                    <div class="panel-body">
-                        <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
-                        <br>
-                        <button type="button" class="btn btn-info pull-right">Post</button>
-                        <div class="clearfix"></div>
+                    <form method="post" action="{{route
+                        ('comments.storeComment',$post->id)}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="panel-body">
+                            <div>
+                                <input type="hidden" name="post_id" value="{{$post->id}}"> 
+                            </div>
+                            <textarea class="form-control" placeholder="write a comment..." rows="3" name="comment_body"></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-info pull-right">Post</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
                         <hr>
                         <div class="container mt-5">
 
